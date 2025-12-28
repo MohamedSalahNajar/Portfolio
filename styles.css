@@ -243,14 +243,13 @@ section {
 
 /* About Section */
 .about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .about-text {
   animation: fadeInLeft 1s ease;
+  text-align: left;
 }
 
 @keyframes fadeInLeft {
@@ -266,14 +265,15 @@ section {
 
 .about-text h3 {
   color: var(--primary);
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.6rem;
 }
 
 .about-text p {
   color: var(--gray);
   line-height: 1.8;
   margin-bottom: 1rem;
+  font-size: 1.05rem;
 }
 
 .about-image {
@@ -294,10 +294,12 @@ section {
 
 .about-card {
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 20px;
   border: 1px solid rgba(99, 102, 241, 0.2);
   backdrop-filter: blur(10px);
+  margin: 2rem auto;
+  max-width: 900px;
 }
 
 /* Skills Section */
@@ -514,8 +516,8 @@ footer {
     font-size: 2.5rem;
   }
 
-  .about-content {
-    grid-template-columns: 1fr;
+  .about-card {
+    padding: 2rem 1.5rem;
   }
 
   .nav-links {
