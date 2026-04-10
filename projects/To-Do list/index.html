@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List - Mohamed Salah Najar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <a href="../index.html" class="retour-lien">← Retour au portfolio</a>
+
+    <h1 class="titre-page">To-Do List</h1>
+    <p class="sous-titre">Gérez vos tâches avec HTML, CSS et JavaScript</p>
+
+    <div class="app">
+
+      <!-- Formulaire d'ajout -->
+      <div class="formulaire-ajout">
+        <input
+          type="text"
+          id="champ-tache"
+          class="champ-saisie"
+          placeholder="Ajouter une nouvelle tâche..."
+          maxlength="80"
+          autocomplete="off"
+        />
+        <button class="btn-ajouter" onclick="ajouterTache()">+</button>
+      </div>
+
+      <!-- Filtres -->
+      <div class="filtres">
+        <button class="filtre actif" data-filtre="toutes" onclick="changerFiltre(this)">Toutes</button>
+        <button class="filtre" data-filtre="actives" onclick="changerFiltre(this)">Actives</button>
+        <button class="filtre" data-filtre="terminees" onclick="changerFiltre(this)">Terminées</button>
+      </div>
+
+      <!-- Compteur -->
+      <div class="compteur">
+        <span id="texte-compteur">0 tâche restante</span>
+        <button class="btn-supprimer-terminees" onclick="supprimerTerminees()">Effacer terminées</button>
+      </div>
+
+      <!-- Liste des tâches -->
+      <ul class="liste-taches" id="liste-taches">
+        <!-- les tâches sont injectées ici par JS -->
+      </ul>
+
+      <!-- Message si liste vide -->
+      <div class="liste-vide" id="liste-vide">
+        <div class="icone-vide">✓</div>
+        <p>Aucune tâche ici !</p>
+      </div>
+
+    </div>
+
+    <!-- Section apprentissage -->
+    <div class="info-section">
+      <h2>Ce que j'ai appris</h2>
+      <ul>
+        <li>Création et suppression dynamique d'éléments DOM</li>
+        <li>Sauvegarde des données avec localStorage</li>
+        <li>Filtrage et affichage conditionnel</li>
+        <li>Gestion d'état simple en JavaScript pur</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

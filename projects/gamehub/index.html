@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADIA — Game Hub</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Hero */
+  .hero {
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg,var(--darker) 0%,var(--dark) 100%);
+  }
+  .hero::before {
+    content:''; position:absolute;
+    width:500px; height:500px;
+    background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);
+    top:-250px; right:-250px;
+    animation:float 20s ease-in-out infinite;
+  }
+  .hero::after {
+    content:''; position:absolute;
+    width:400px; height:400px;
+    background:radial-gradient(circle,rgba(236,72,153,0.1) 0%,transparent 70%);
+    bottom:-200px; left:-200px;
+    animation:float 15s ease-in-out infinite reverse;
+  }
+  @keyframes float {
+    0%,100% { transform:translate(0,0) rotate(0deg); }
+    50%      { transform:translate(50px,50px) rotate(180deg); }
+  }
+  .hero-content {
+    text-align:center; z-index:1; padding:2rem;
+    animation:fadeInUp 0.9s ease;
+  }
+  .hero-tag { font-size:0.75rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--primary); margin-bottom:1rem; }
+  .hero-content h1 {
+    font-size:clamp(3rem,12vw,7rem); font-weight:800; line-height:0.9; margin-bottom:1.2rem;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-content .tagline { font-size:1.1rem; color:var(--gray); margin-bottom:2.5rem; }
+  .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  .scroll-indicator {
+    position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+    animation:bounce 2s infinite; color:var(--primary); font-size:1.6rem;
+  }
+  @keyframes bounce {
+    0%,20%,50%,80%,100% { transform:translateX(-50%) translateY(0); }
+    40% { transform:translateX(-50%) translateY(-10px); }
+    60% { transform:translateX(-50%) translateY(-5px); }
+  }
+
+  /* Games grid */
+  .games-section {
+    max-width:1100px; margin:0 auto; padding:5rem 2rem;
+  }
+  .games-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:1.5rem;
+    margin-top:1rem;
+  }
+  .game-card {
+    display:block; text-decoration:none; color:inherit;
+    padding:2rem 2rem 1.8rem;
+  }
+  .game-card-num {
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--primary); margin-bottom:0.8rem;
+  }
+  .game-card-icon { font-size:2.8rem; margin-bottom:0.8rem; display:block; }
+  .game-card h3 { font-size:1.4rem; font-weight:700; margin-bottom:0.5rem; }
+  .game-card p { color:var(--gray); font-size:0.88rem; line-height:1.6; margin-bottom:1.2rem; }
+  .game-card-tag {
+    display:inline-block; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--primary); border:1px solid rgba(99,102,241,0.35);
+    padding:3px 10px; border-radius:20px;
+  }
+
+  /* About strip */
+  .about-strip {
+    max-width:900px; margin:0 auto; padding:0 2rem 5rem;
+  }
+  .about-card {
+    padding:2.5rem; border-radius:20px;
+    background:linear-gradient(135deg,rgba(99,102,241,0.07),rgba(139,92,246,0.07));
+    border:1px solid rgba(99,102,241,0.2);
+  }
+  .about-card h3 { color:var(--primary); font-size:1.3rem; margin-bottom:0.8rem; }
+  .about-card p { color:var(--gray); line-height:1.8; }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="index.html">ARCADIA</a>
+    <div style="display: flex; align-items: center; gap: 1.8rem;">
+      <ul class="nav-links">
+        <li><a href="#games">Games</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" style="margin: 0; padding: 0;">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">// Browser Game Hub</div>
+    <h1>ARCADIA</h1>
+    <p class="tagline">Five games. Zero installs. Pure vanilla browser fun.</p>
+    <div class="cta-buttons">
+      <a href="#games" class="btn btn-primary">Play Now</a>
+      <a href="#about" class="btn btn-secondary">About</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">↓</div>
+</section>
+
+<!-- Games -->
+<section class="games-section" id="games">
+  <h2 class="section-title">Games</h2>
+  <div class="games-grid">
+
+    <a class="game-card glass-card fade-in fade-in-1" href="wordle/index.html">
+      <div class="game-card-num">01 ——</div>
+      <span class="game-card-icon">🔤</span>
+      <h3>Wordle</h3>
+      <p>Guess the hidden 5-letter word in 6 tries. Letters reveal themselves — green means right spot, yellow means wrong spot.</p>
+      <span class="game-card-tag">Word · Streak</span>
+    </a>
+
+    <a class="game-card glass-card fade-in fade-in-2" href="snake/index.html">
+      <div class="game-card-num">02 ——</div>
+      <span class="game-card-icon">🐍</span>
+      <h3>Snake</h3>
+      <p>Eat the dots, grow longer, don't crash. Speed scales as your score climbs. How long can you survive?</p>
+      <span class="game-card-tag">Arcade · Endless</span>
+    </a>
+
+    <a class="game-card glass-card fade-in fade-in-3" href="puzzle/index.html">
+      <div class="game-card-num">03 ——</div>
+      <span class="game-card-icon">🧩</span>
+      <h3>Slide Puzzle</h3>
+      <p>Scrambled 4×4 grid. Slide tiles using the empty space until every number is in order. Fewest moves wins.</p>
+      <span class="game-card-tag">Puzzle · Logic</span>
+    </a>
+
+    <a class="game-card glass-card fade-in fade-in-4" href="memory/index.html">
+      <div class="game-card-num">04 ——</div>
+      <span class="game-card-icon">🃏</span>
+      <h3>Memory</h3>
+      <p>Flip cards, find all matching pairs. The faster you clear the board, the better your score. Test your memory!</p>
+      <span class="game-card-tag">Memory · Timed</span>
+    </a>
+
+    <a class="game-card glass-card fade-in fade-in-5" href="breakout/index.html">
+      <div class="game-card-num">05 ——</div>
+      <span class="game-card-icon">🧱</span>
+      <h3>Breakout</h3>
+      <p>Bounce the ball, smash all bricks before they get you. Classic paddle arcade — multiple levels, lives on the line.</p>
+      <span class="game-card-tag">Arcade · Lives</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-strip" id="about">
+  <div class="about-card glass-card" style="padding:2.5rem">
+    <h3>About ARCADIA</h3>
+    <p>A portfolio project demonstrating vanilla JavaScript game development — no frameworks, no dependencies. Each game is built with plain HTML, CSS, and JS, sharing a single stylesheet for a cohesive design. Scores are saved locally in your browser via <code style="color:var(--primary)">localStorage</code>.</p>
+  </div>
+</section>
+
+<footer>
+  <p>ARCADIA Game Hub · Vanilla JS · No dependencies · <a href="#">GitHub</a></p>
+</footer>
+
+<script src="theme-setup.js"></script>
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+</body>
+</html>

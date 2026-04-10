@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HabitFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#">Habit<span>Flow</span></a>
+    <div class="nav-right">
+      <div class="streak-badge">🔥 <span id="top-streak">0</span> day streak</div>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-content">
+    <p class="hero-tag">// Your daily ritual tracker</p>
+    <h1>Build habits that <span class="gradient-text">actually stick.</span></h1>
+    <p class="hero-sub">Track streaks, visualize progress, stay consistent.</p>
+  </div>
+  <div class="scroll-cue">↓</div>
+</header>
+
+<main class="app-container" id="app">
+
+  <!-- TODAY -->
+  <section class="panel today-panel">
+    <div class="panel-header">
+      <div>
+        <h2 class="panel-title">Today</h2>
+        <p class="panel-date" id="today-date"></p>
+      </div>
+      <div class="today-progress-wrap">
+        <svg class="progress-ring" width="56" height="56" viewBox="0 0 56 56">
+          <defs>
+            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <circle cx="28" cy="28" r="22" class="ring-bg"/>
+          <circle cx="28" cy="28" r="22" class="ring-fill" id="ring-fill"/>
+        </svg>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+    </div>
+    <div class="habits-list" id="habits-list"></div>
+  </section>
+
+  <!-- ADD -->
+  <section class="panel add-panel">
+    <h2 class="panel-title">Add a Habit</h2>
+    <div class="add-form">
+      <div class="form-row">
+        <input type="text" id="habit-input" class="habit-input" placeholder="e.g. Morning run, Read 20 pages…" maxlength="40" autocomplete="off">
+      </div>
+      <div class="form-row form-row-2">
+        <div class="field-group">
+          <label>Category</label>
+          <select id="habit-category" class="select-input">
+            <option value="health">🏃 Health</option>
+            <option value="mind">🧠 Mind</option>
+            <option value="skill">🎯 Skill</option>
+            <option value="social">👥 Social</option>
+            <option value="other">✨ Other</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Goal (days/week)</label>
+          <select id="habit-goal" class="select-input">
+            <option value="7">Every day</option>
+            <option value="5">5× / week</option>
+            <option value="3">3× / week</option>
+            <option value="1">Once a week</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="add-btn">+ Add Habit</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-row">
+    <div class="stat-card glass-card">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-info"><div class="stat-val" id="stat-streak">0</div><div class="stat-label">Best Streak</div></div>
+    </div>
+    <div class="stat-card glass-card">
+      <div class="stat-icon">✅</div>
+      <div class="stat-info"><div class="stat-val" id="stat-total">0</div><div class="stat-label">Total Done</div></div>
+    </div>
+    <div class="stat-card glass-card">
+      <div class="stat-icon">📅</div>
+      <div class="stat-info"><div class="stat-val" id="stat-habits">0</div><div class="stat-label">Active Habits</div></div>
+    </div>
+    <div class="stat-card glass-card">
+      <div class="stat-icon">📈</div>
+      <div class="stat-info"><div class="stat-val" id="stat-rate">0%</div><div class="stat-label">7-day Rate</div></div>
+    </div>
+  </section>
+
+  <!-- HEATMAP -->
+  <section class="panel heatmap-panel">
+    <h2 class="panel-title">30-Day Overview</h2>
+    <div class="heatmap-wrap" id="heatmap"></div>
+    <div class="heatmap-legend">
+      <span>Less</span>
+      <div class="legend-cell lc-0"></div>
+      <div class="legend-cell lc-1"></div>
+      <div class="legend-cell lc-2"></div>
+      <div class="legend-cell lc-3"></div>
+      <span>More</span>
+    </div>
+  </section>
+
+  <!-- ALL HABITS -->
+  <section class="panel habits-table-panel">
+    <div class="panel-header">
+      <h2 class="panel-title">All Habits</h2>
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="ftab active" data-filter="all">All</button>
+        <button class="ftab" data-filter="health">🏃</button>
+        <button class="ftab" data-filter="mind">🧠</button>
+        <button class="ftab" data-filter="skill">🎯</button>
+        <button class="ftab" data-filter="social">👥</button>
+        <button class="ftab" data-filter="other">✨</button>
+      </div>
+    </div>
+    <div id="habits-table"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>HabitFlow · Vanilla JS · Data stored locally in your browser</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

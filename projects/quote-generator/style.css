@@ -1,0 +1,348 @@
+/* ===========================
+   Reset et variables
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fond-page: #020617;
+  --fond-sombre: #0f172a;
+  --fond-carte: #1e293b;
+  --primaire: #6366f1;
+  --secondaire: #8b5cf6;
+  --accent: #ec4899;
+  --texte-clair: #f8fafc;
+  --texte-gris: #64748b;
+  --texte-moyen: #94a3b8;
+  --bordure: rgba(99, 102, 241, 0.2);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--fond-page);
+  color: var(--texte-clair);
+  min-height: 100vh;
+}
+
+/* ===========================
+   Mise en page
+   =========================== */
+.page-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.retour-lien {
+  display: inline-block;
+  color: var(--primaire);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.2s;
+}
+
+.retour-lien:hover {
+  opacity: 0.75;
+}
+
+.titre-page {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primaire), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.sous-titre {
+  color: var(--texte-gris);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ===========================
+   Carte de citation
+   =========================== */
+.carte-citation {
+  background: var(--fond-sombre);
+  border: 1px solid var(--bordure);
+  border-radius: 24px;
+  padding: 3rem 2.5rem 2.5rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s;
+}
+
+.carte-citation:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Guillemet décoratif en arrière-plan */
+.guillemet {
+  position: absolute;
+  top: 1rem;
+  left: 1.8rem;
+  font-size: 7rem;
+  line-height: 1;
+  color: rgba(99, 102, 241, 0.12);
+  font-family: Georgia, serif;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Texte de la citation */
+.texte-citation {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: var(--texte-clair);
+  font-style: italic;
+  margin-bottom: 1.8rem;
+  padding-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Auteur */
+.auteur-citation {
+  font-size: 0.95rem;
+  color: var(--primaire);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+/* Badge catégorie */
+.badge-categorie {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  width: fit-content;
+}
+
+/* ===========================
+   Animation de transition entre citations
+   =========================== */
+.carte-citation.fondu-sortie {
+  animation: fonduSortie 0.2s ease forwards;
+}
+
+.carte-citation.fondu-entree {
+  animation: fonduEntree 0.3s ease forwards;
+}
+
+@keyframes fonduSortie {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes fonduEntree {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   Contrôles (filtre + boutons)
+   =========================== */
+.controles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Groupe filtre catégorie */
+.groupe-filtre {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.label-filtre {
+  color: var(--texte-gris);
+  font-size: 0.87rem;
+  white-space: nowrap;
+}
+
+.select-categorie {
+  background: var(--fond-sombre);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  color: var(--texte-moyen);
+  font-size: 0.87rem;
+  font-family: inherit;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.select-categorie:focus {
+  border-color: var(--primaire);
+}
+
+/* Groupe boutons */
+.groupe-boutons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-secondaire {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--bordure);
+  background: transparent;
+  color: var(--texte-moyen);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondaire:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  color: var(--texte-clair);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.btn-secondaire:active {
+  transform: scale(0.95);
+}
+
+.btn-principal {
+  padding: 0.5rem 1.3rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, var(--primaire), var(--secondaire));
+  color: white;
+  font-size: 0.87rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-principal:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.btn-principal:active {
+  transform: scale(0.95);
+}
+
+/* ===========================
+   Compteur de citations vues
+   =========================== */
+.compteur-vues {
+  text-align: center;
+  color: var(--texte-gris);
+  font-size: 0.82rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ===========================
+   Notification de copie
+   =========================== */
+.notif-copie {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--fond-carte);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  opacity: 0;
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.notif-copie.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===========================
+   Section apprentissage
+   =========================== */
+.info-section {
+  padding: 1.5rem 1.8rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 16px;
+}
+
+.info-section h2 {
+  color: var(--primaire);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.info-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-section ul li {
+  color: var(--texte-gris);
+  font-size: 0.92rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.info-section ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--primaire);
+}
+
+/* ===========================
+   Responsive mobile
+   =========================== */
+@media (max-width: 500px) {
+  .controles {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .groupe-boutons {
+    width: 100%;
+  }
+
+  .btn-principal {
+    flex: 1;
+  }
+
+  .texte-citation {
+    font-size: 1.1rem;
+  }
+
+  .carte-citation {
+    padding: 2.5rem 1.8rem 2rem;
+  }
+}

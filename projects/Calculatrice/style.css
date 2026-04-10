@@ -1,0 +1,286 @@
+/* ===========================
+   Variables globales
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fond-page: #020617;
+  --fond-sombre: #0f172a;
+  --primaire: #6366f1;
+  --secondaire: #8b5cf6;
+  --accent: #ec4899;
+  --texte-clair: #f8fafc;
+  --texte-gris: #64748b;
+  --btn-chiffre: #1e293b;
+  --btn-chiffre-hover: #293548;
+  --btn-special: #2d3748;
+  --btn-operateur: rgba(99, 102, 241, 0.25);
+  --btn-operateur-hover: rgba(99, 102, 241, 0.45);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--fond-page);
+  color: var(--texte-clair);
+  min-height: 100vh;
+}
+
+/* ===========================
+   Conteneur principal
+   =========================== */
+.page-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+/* Lien retour */
+.retour-lien {
+  display: inline-block;
+  color: var(--primaire);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.2s;
+}
+
+.retour-lien:hover {
+  opacity: 0.75;
+}
+
+/* Titre de la page */
+.titre-page {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primaire), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.sous-titre {
+  color: var(--texte-gris);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ===========================
+   Calculatrice
+   =========================== */
+.calculatrice {
+  background: var(--fond-sombre);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Écran d'affichage
+   =========================== */
+.ecran {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.4rem;
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+/* Expression en cours (petite, en haut) */
+.expression {
+  color: var(--texte-gris);
+  font-size: 0.9rem;
+  min-height: 22px;
+  word-break: break-all;
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+/* Résultat / saisie (grande, en bas) */
+.resultat {
+  color: var(--texte-clair);
+  font-size: 2.4rem;
+  font-weight: 300;
+  word-break: break-all;
+  text-align: right;
+  transition: font-size 0.15s ease;
+}
+
+/* Réduction de la taille si le nombre est long */
+.resultat.long {
+  font-size: 1.6rem;
+}
+
+.resultat.tres-long {
+  font-size: 1.2rem;
+}
+
+/* ===========================
+   Grille de boutons
+   =========================== */
+.grille-boutons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* ===========================
+   Style général des boutons
+   =========================== */
+.btn {
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-family: inherit;
+  padding: 0;
+  height: 68px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.94);
+}
+
+/* Boutons chiffres */
+.btn-chiffre {
+  background: var(--btn-chiffre);
+  color: var(--texte-clair);
+}
+
+.btn-chiffre:hover {
+  background: var(--btn-chiffre-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Boutons spéciaux (AC, ⌫, %) */
+.btn-special {
+  background: var(--btn-special);
+  color: var(--texte-gris);
+  font-weight: 600;
+}
+
+.btn-special:hover {
+  background: #384152;
+  color: var(--texte-clair);
+}
+
+/* Boutons opérateurs (+, -, ×, ÷) */
+.btn-operateur {
+  background: var(--btn-operateur);
+  color: var(--primaire);
+  font-size: 1.4rem;
+  font-weight: 500;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.btn-operateur:hover {
+  background: var(--btn-operateur-hover);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+/* Bouton = */
+.btn-egal {
+  background: linear-gradient(135deg, var(--primaire), var(--secondaire));
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-egal:hover {
+  box-shadow: 0 8px 28px rgba(99, 102, 241, 0.6);
+  filter: brightness(1.1);
+}
+
+
+
+/* ===========================
+   Section "Ce que j'ai appris"
+   =========================== */
+.info-section {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.8rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 16px;
+}
+
+.info-section h2 {
+  color: var(--primaire);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.info-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-section ul li {
+  color: var(--texte-gris);
+  font-size: 0.92rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.info-section ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--primaire);
+}
+
+/* ===========================
+   Animation d'erreur sur l'écran
+   =========================== */
+@keyframes secouer {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.ecran.erreur {
+  animation: secouer 0.35s ease;
+}
+
+/* ===========================
+   Responsive mobile
+   =========================== */
+@media (max-width: 400px) {
+  .btn {
+    height: 58px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+  }
+
+  .resultat {
+    font-size: 2rem;
+  }
+
+  .grille-boutons {
+    gap: 8px;
+  }
+
+  .calculatrice {
+    padding: 1.2rem;
+    border-radius: 20px;
+  }
+}

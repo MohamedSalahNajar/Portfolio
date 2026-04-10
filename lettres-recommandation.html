@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes lettres de recommandation - Mohamed Salah Najar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .document-card {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .document-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+      border-color: var(--primary);
+    }
+
+    .document-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .document-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-content {
+      background: var(--darker);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .modal-header h3 {
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: var(--primary);
+    }
+
+    .pdf-viewer {
+      width: 100%;
+      height: calc(90vh - 120px);
+      border: none;
+    }
+
+    .download-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateX(-50%) translateY(-3px);
+      box-shadow: 0 12px 35px rgba(99, 102, 241, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="logo">MSN</div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Accueil</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#cv">CV</a></li>
+        <li><a href="index.html#curriculum">Document</a></li>
+        <li><a href="index.html#motivation">Motivation</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <section style="padding: 8rem 2rem 6rem;">
+    <h2 class="section-title">Mes lettres de recommandation</h2>
+    <p style="text-align: center; color: var(--gray); max-width: 800px; margin: 0 auto 3rem;">
+      Cliquez sur chaque lettre de recommandation pour la consulter directement en ligne.
+    </p>
+
+    <div class="documents-grid documents-grid-symmetric">
+      <div class="document-card" data-pdf="PDF/Lettre de recommandation madame Rachida.pdf" data-title="PDF/Lettre de recommandation madame Rachida.pdf">
+        <h3>Lettre de recommandation</h3>
+        <p>Madame Rachida</p>
+      </div>
+
+      <div class="document-card" data-pdf="PDF/Lettre de recommandation madame Amira.pdf" data-title="PDF/Lettre de recommandation madame Amira.pdf">
+        <h3>Lettre de recommandation</h3>
+        <p>Madame Amira</p>
+      </div>
+
+      <div class="document-card" data-pdf="PDF/Lettre de recommandation madame Fatiha.pdf" data-title="PDF/Lettre de recommandation madame Fatiha.pdf">
+        <h3>Lettre de recommandation</h3>
+        <p>Madame Fatiha</p>
+      </div>
+
+      <div class="document-card" data-pdf="PDF/Lettre de recommandation monsieur Imad.pdf" data-title="PDF/Lettre de recommandation monsieur Imad.pdf">
+        <h3>Lettre de recommandation</h3>
+        <p>Monsieur Imad</p>
+      </div>
+    </div>
+    <a href="index.html#curriculum" class="back-link">← Retour au portfolio</a>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="pdfModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Document</h3>
+        <button class="close-btn">&times;</button>
+      </div>
+      <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+      <a href="#" id="downloadLink" class="download-btn" download>Télécharger le PDF</a>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pdfModal');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const modalTitle = document.getElementById('modalTitle');
+    const downloadLink = document.getElementById('downloadLink');
+    const closeBtn = document.querySelector('.close-btn');
+
+    document.querySelectorAll('.document-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const pdf = card.dataset.pdf;
+        const title = card.dataset.title;
+        modalTitle.textContent = title;
+        pdfViewer.src = pdf;
+        downloadLink.href = pdf;
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      pdfViewer.src = ''; // Clear iframe to stop loading
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        pdfViewer.src = '';
+      }
+    });
+
+    // Keep navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

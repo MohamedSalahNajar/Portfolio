@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Glasses - Real-Time Speech to Text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- AR Glasses Frame Overlay -->
+    <div class="ar-frame">
+        <div class="frame-top"></div>
+        <div class="frame-left"></div>
+        <div class="frame-right"></div>
+    </div>
+
+    <!-- Main AR Display (what you see through the glasses) -->
+    <div class="ar-display">
+        <!-- Camera Feed Simulation (transparent overlay) -->
+        <div class="camera-view">
+            <div class="scene-simulation">
+                <!-- Simulated real-world view -->
+                <div class="background-blur"></div>
+                
+                <!-- Status Indicator -->
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="pulse-dot"></div>
+                    <span id="statusText">Prêt à écouter</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtitle Overlay at Bottom (like AR glasses would show) -->
+        <div class="subtitle-overlay">
+            <div class="subtitle-container">
+                <!-- Real-time transcription appears here -->
+                <div class="subtitle-text" id="subtitleText">
+                    Appuyez sur le bouton pour commencer...
+                </div>
+                
+                <!-- Confidence indicator -->
+                <div class="confidence-bar" id="confidenceBar">
+                    <div class="confidence-fill" id="confidenceFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Indicator -->
+        <div class="language-badge" id="languageBadge">
+            <span class="flag">🇫🇷</span>
+            <span class="lang-text">Français</span>
+        </div>
+
+        <!-- Controls Overlay -->
+        <div class="controls-overlay">
+            <button class="ar-button" id="startBtn" onclick="toggleRecognition()">
+                <svg class="mic-icon" id="micIcon" viewBox="0 0 24 24">
+                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                </svg>
+                <span id="btnText">Démarrer</span>
+            </button>
+
+            <button class="ar-button secondary" id="languageBtn" onclick="toggleLanguage()">
+                <span id="langBtnText">🇫🇷 → 🇬🇧</span>
+            </button>
+
+            <button class="ar-button secondary" id="clearBtn" onclick="clearTranscript()">
+                <span>Effacer</span>
+            </button>
+        </div>
+
+        <!-- Transcript History (optional - can scroll up) -->
+        <div class="transcript-history" id="transcriptHistory">
+            <div class="history-header">
+                <span>Historique</span>
+                <button class="minimize-btn" onclick="toggleHistory()">−</button>
+            </div>
+            <div class="history-content" id="historyContent">
+                <!-- Previous transcriptions appear here -->
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <h3>Paramètres</h3>
+            <div class="setting-item">
+                <label>Taille du texte</label>
+                <input type="range" id="textSize" min="16" max="32" value="24" oninput="updateTextSize(this.value)">
+            </div>
+            <div class="setting-item">
+                <label>Transparence</label>
+                <input type="range" id="transparency" min="70" max="100" value="95" oninput="updateTransparency(this.value)">
+            </div>
+            <div class="setting-item">
+                <label>
+                    <input type="checkbox" id="autoScroll" checked>
+                    Défilement automatique
+                </label>
+            </div>
+        </div>
+
+        <!-- Settings Trigger -->
+        <button class="settings-trigger" onclick="toggleSettings()">
+            ⚙️
+        </button>
+    </div>
+
+    <!-- Info Panel (hidden by default) -->
+    <div class="info-panel" id="infoPanel">
+        <button class="close-info" onclick="toggleInfo()">×</button>
+        <h2>AR Glasses Speech-to-Text</h2>
+        <p><strong>Prototype de lunettes AR avec transcription en temps réel</strong></p>
+        
+        <h3>Fonctionnalités</h3>
+        <ul>
+            <li>🎤 Reconnaissance vocale en temps réel</li>
+            <li>🇫🇷 Support français (FR) et anglais (EN)</li>
+            <li>👓 Vue simulée des lunettes AR</li>
+            <li>📝 Sous-titres en bas de l'écran</li>
+            <li>📊 Indicateur de confiance</li>
+            <li>📜 Historique des transcriptions</li>
+        </ul>
+
+        <h3>Comment utiliser</h3>
+        <ol>
+            <li>Cliquez sur "Démarrer" pour activer le micro</li>
+            <li>Parlez en français ou anglais</li>
+            <li>Le texte apparaît en temps réel en bas</li>
+            <li>Changez de langue avec le bouton 🇫🇷 → 🇬🇧</li>
+        </ol>
+
+        <div class="tech-stack">
+            <strong>Technologies:</strong> Web Speech API, CSS Glassmorphism, Real-time Processing
+        </div>
+    </div>
+
+    <!-- Info Trigger -->
+    <button class="info-trigger" onclick="toggleInfo()">
+        ℹ️
+    </button>
+
+    <script src="speech-recognition.js"></script>
+</body>
+</html>

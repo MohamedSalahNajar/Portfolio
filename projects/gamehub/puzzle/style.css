@@ -1,0 +1,66 @@
+/* Slide Puzzle specific styles */
+#board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  width: 320px;
+  padding: 5px;
+  background: rgba(99,102,241,0.06);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: 14px;
+}
+
+.tile {
+  width: 70px; height: 70px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s;
+  position: relative;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.15);
+  color: var(--light);
+}
+
+.tile.empty {
+  background: rgba(15,23,42,0.5);
+  border-color: rgba(99,102,241,0.06);
+  cursor: default;
+  pointer-events: none;
+}
+
+.tile.movable {
+  border-color: rgba(99,102,241,0.45);
+  background: rgba(99,102,241,0.12);
+  box-shadow: 0 0 12px rgba(99,102,241,0.2);
+  cursor: pointer;
+}
+
+.tile.movable:hover {
+  transform: scale(0.95);
+  background: rgba(99,102,241,0.2);
+  box-shadow: 0 0 20px rgba(99,102,241,0.35);
+}
+
+.tile.correct {
+  color: #10b981;
+  border-color: rgba(16,185,129,0.3);
+}
+
+.tile.correct.movable {
+  border-color: rgba(16,185,129,0.5);
+  box-shadow: 0 0 12px rgba(16,185,129,0.2);
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 380px) {
+  #board { width: 280px; }
+  .tile { width: 60px; height: 60px; font-size: 1.3rem; }
+}

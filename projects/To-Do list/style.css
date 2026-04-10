@@ -1,0 +1,409 @@
+/* ===========================
+   Reset et variables
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fond-page: #020617;
+  --fond-sombre: #0f172a;
+  --fond-carte: #1e293b;
+  --primaire: #6366f1;
+  --secondaire: #8b5cf6;
+  --accent: #ec4899;
+  --texte-clair: #f8fafc;
+  --texte-gris: #64748b;
+  --texte-moyen: #94a3b8;
+  --bordure: rgba(99, 102, 241, 0.2);
+  --bordure-hover: rgba(99, 102, 241, 0.5);
+  --succes: #10b981;
+  --danger: #ef4444;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--fond-page);
+  color: var(--texte-clair);
+  min-height: 100vh;
+}
+
+/* ===========================
+   Mise en page principale
+   =========================== */
+.page-wrapper {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.retour-lien {
+  display: inline-block;
+  color: var(--primaire);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+  transition: opacity 0.2s;
+}
+
+.retour-lien:hover {
+  opacity: 0.75;
+}
+
+.titre-page {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primaire), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.4rem;
+}
+
+.sous-titre {
+  color: var(--texte-gris);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ===========================
+   Conteneur de l'application
+   =========================== */
+.app {
+  background: var(--fond-sombre);
+  border: 1px solid var(--bordure);
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Formulaire d'ajout
+   =========================== */
+.formulaire-ajout {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.4rem;
+}
+
+.champ-saisie {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--bordure);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  color: var(--texte-clair);
+  font-size: 0.97rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.champ-saisie::placeholder {
+  color: var(--texte-gris);
+}
+
+.champ-saisie:focus {
+  border-color: var(--primaire);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.btn-ajouter {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--primaire), var(--secondaire));
+  color: white;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  flex-shrink: 0;
+}
+
+.btn-ajouter:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.btn-ajouter:active {
+  transform: scale(0.92);
+}
+
+/* ===========================
+   Filtres
+   =========================== */
+.filtres {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.filtre {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--bordure);
+  background: transparent;
+  color: var(--texte-gris);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filtre:hover {
+  border-color: var(--bordure-hover);
+  color: var(--texte-moyen);
+}
+
+.filtre.actif {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--primaire);
+  color: #a5b4fc;
+}
+
+/* ===========================
+   Compteur + bouton effacer
+   =========================== */
+.compteur {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+}
+
+#texte-compteur {
+  color: var(--texte-gris);
+}
+
+.btn-supprimer-terminees {
+  background: transparent;
+  border: none;
+  color: var(--texte-gris);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.btn-supprimer-terminees:hover {
+  color: var(--danger);
+}
+
+/* ===========================
+   Liste des tâches
+   =========================== */
+.liste-taches {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Carte d'une tâche */
+.tache {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--fond-carte);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition: all 0.25s ease;
+  animation: glisserEntree 0.25s ease;
+}
+
+@keyframes glisserEntree {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tache:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: #253347;
+}
+
+/* Case à cocher personnalisée */
+.checkbox-custom {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--bordure-hover);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  color: transparent;
+}
+
+.checkbox-custom:hover {
+  border-color: var(--primaire);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+/* Quand la tâche est terminée */
+.tache.terminee .checkbox-custom {
+  background: var(--succes);
+  border-color: var(--succes);
+  color: white;
+}
+
+.tache.terminee .texte-tache {
+  color: var(--texte-gris);
+  text-decoration: line-through;
+}
+
+/* Texte de la tâche (éditable en double-clic) */
+.texte-tache {
+  flex: 1;
+  color: var(--texte-clair);
+  font-size: 0.97rem;
+  line-height: 1.4;
+  word-break: break-word;
+  outline: none;
+  transition: color 0.2s;
+}
+
+.texte-tache[contenteditable="true"] {
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 4px;
+  padding: 2px 6px;
+  border-bottom: 1px dashed var(--primaire);
+}
+
+/* Bouton supprimer -->  -->  --> */
+.btn-supprimer {
+  background: transparent;
+  border: none;
+  color: var(--texte-gris);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  line-height: 1;
+  opacity: 0;
+}
+
+.tache:hover .btn-supprimer {
+  opacity: 1;
+}
+
+.btn-supprimer:hover {
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ===========================
+   Message liste vide
+   =========================== */
+.liste-vide {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--texte-gris);
+}
+
+.liste-vide.visible {
+  display: block;
+}
+
+.icone-vide {
+  font-size: 2.5rem;
+  color: rgba(99, 102, 241, 0.3);
+  margin-bottom: 0.8rem;
+}
+
+.liste-vide p {
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   Animation de suppression
+   =========================== */
+.tache.suppression {
+  animation: disparaitre 0.25s ease forwards;
+}
+
+@keyframes disparaitre {
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* ===========================
+   Section apprentissage
+   =========================== */
+.info-section {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.8rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 16px;
+}
+
+.info-section h2 {
+  color: var(--primaire);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.info-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-section ul li {
+  color: var(--texte-gris);
+  font-size: 0.92rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.info-section ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--primaire);
+}
+
+/* ===========================
+   Responsive mobile
+   =========================== */
+@media (max-width: 480px) {
+  .app {
+    padding: 1.3rem;
+    border-radius: 18px;
+  }
+
+  .titre-page {
+    font-size: 1.7rem;
+  }
+
+  .filtres {
+    flex-wrap: wrap;
+  }
+}

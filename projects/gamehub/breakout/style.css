@@ -1,0 +1,38 @@
+/* Breakout specific styles */
+#canvas {
+  box-shadow:
+    0 0 0 1px rgba(236,72,153,0.1),
+    0 0 40px rgba(139,92,246,0.08),
+    0 20px 60px rgba(0,0,0,0.5);
+  cursor: none;
+}
+
+/* Touch controls */
+.touch-bar {
+  display: none;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+@media (pointer: coarse) {
+  .touch-bar { display: flex; }
+  #canvas { cursor: auto; }
+}
+
+.touch-bar button {
+  padding: 0.6rem 1.4rem;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 50px;
+  color: var(--light);
+  font-family: inherit;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.touch-bar button:active { background: rgba(99,102,241,0.3); }
+
+@media (max-width: 440px) {
+  #canvas { width: 320px !important; height: 304px !important; }
+}

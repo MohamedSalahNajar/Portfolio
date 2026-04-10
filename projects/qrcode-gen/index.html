@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur QR Code - Mohamed Salah Najar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <a href="../index.html" class="retour-lien">← Retour au portfolio</a>
+
+    <h1 class="titre-page">Générateur de QR Code</h1>
+    <p class="sous-titre">Transformez n'importe quel texte ou lien en QR code instantanément</p>
+
+    <div class="app">
+
+      <!-- Panneau gauche : formulaire -->
+      <div class="panneau-gauche">
+
+        <!-- Onglets type de contenu -->
+        <div class="onglets">
+          <button class="onglet actif" data-type="url" onclick="changerType(this)">🔗 URL</button>
+          <button class="onglet" data-type="texte" onclick="changerType(this)">📝 Texte</button>
+          <button class="onglet" data-type="email" onclick="changerType(this)">📧 Email</button>
+          <button class="onglet" data-type="tel" onclick="changerType(this)">📞 Téléphone</button>
+        </div>
+
+        <!-- Champ de saisie principal -->
+        <div class="groupe-champ">
+          <label class="label-champ" id="label-saisie" for="saisie-principale">URL à encoder</label>
+          <input
+            type="url"
+            id="saisie-principale"
+            class="champ-saisie"
+            placeholder="https://exemple.com"
+            oninput="genererQR()"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Options de personnalisation -->
+        <div class="section-options">
+          <p class="titre-options">Personnalisation</p>
+
+          <!-- Taille -->
+          <div class="groupe-option">
+            <label class="label-option" for="taille-qr">
+              Taille : <span id="valeur-taille">200</span>px
+            </label>
+            <input
+              type="range"
+              id="taille-qr"
+              min="100"
+              max="400"
+              value="200"
+              step="10"
+              oninput="mettreAJourTaille(this.value)"
+            />
+          </div>
+
+          <!-- Couleur principale -->
+          <div class="groupe-option">
+            <label class="label-option" for="couleur-principale">Couleur du QR</label>
+            <div class="groupe-couleur">
+              <input type="color" id="couleur-principale" value="#6366f1" oninput="genererQR()" />
+              <span class="hex-couleur" id="hex-principale">#6366f1</span>
+            </div>
+          </div>
+
+          <!-- Couleur de fond -->
+          <div class="groupe-option">
+            <label class="label-option" for="couleur-fond">Couleur de fond</label>
+            <div class="groupe-couleur">
+              <input type="color" id="couleur-fond" value="#ffffff" oninput="genererQR()" />
+              <span class="hex-couleur" id="hex-fond">#ffffff</span>
+            </div>
+          </div>
+
+          <!-- Niveau de correction d'erreur -->
+          <div class="groupe-option">
+            <label class="label-option" for="correction">Correction d'erreur</label>
+            <select id="correction" class="select-option" onchange="genererQR()">
+              <option value="L">Faible (L) — 7%</option>
+              <option value="M" selected>Moyen (M) — 15%</option>
+              <option value="Q">Élevé (Q) — 25%</option>
+              <option value="H">Maximum (H) — 30%</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Panneau droit : aperçu QR -->
+      <div class="panneau-droit">
+
+        <div class="zone-apercu" id="zone-apercu">
+          <div class="placeholder-qr" id="placeholder-qr">
+            <div class="icone-placeholder">⬛</div>
+            <p>Entrez du contenu<br>pour générer votre QR code</p>
+          </div>
+          <div id="conteneur-qr"></div>
+        </div>
+
+        <!-- Boutons de téléchargement -->
+        <div class="boutons-telechargement" id="boutons-telechargement" style="display:none;">
+          <button class="btn-telecharger" onclick="telecharger('png')">
+            ⬇ Télécharger PNG
+          </button>
+          <button class="btn-telecharger btn-secondaire" onclick="telecharger('svg')">
+            ⬇ Télécharger SVG
+          </button>
+        </div>
+
+        <!-- Info taille -->
+        <p class="info-taille" id="info-taille"></p>
+
+      </div>
+
+    </div>
+
+    <!-- Section apprentissage -->
+    <div class="info-section">
+      <h2>Ce que j'ai appris</h2>
+      <ul>
+        <li>Utilisation d'une bibliothèque JavaScript externe (QRCode.js)</li>
+        <li>Génération et téléchargement d'images canvas (PNG)</li>
+        <li>Personnalisation dynamique via des inputs couleur et range</li>
+        <li>Gestion des différents types de contenu (URL, texte, email, tel)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bibliothèque QRCode.js (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

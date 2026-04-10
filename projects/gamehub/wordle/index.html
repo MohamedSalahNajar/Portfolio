@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADIA — Wordle</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="../index.html">ARCADIA</a>
+    <div style="display: flex; align-items: center; gap: 1.8rem;">
+      <ul class="nav-links">
+        <li><a href="../index.html#games">← All Games</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" style="margin: 0; padding: 0;">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag">Game 01</div>
+  <h1>Wordle</h1>
+  <p>Guess the 5-letter word in 6 tries</p>
+</div>
+
+<div class="scorebar">
+  <div class="scorebar-item">Streak <b id="streak">0</b></div>
+  <div class="scorebar-item">Best Streak <b id="best-streak">0</b></div>
+</div>
+
+<div class="game-area">
+  <div class="msg-bar" id="message"></div>
+
+  <div id="grid"></div>
+
+  <div id="keyboard"></div>
+
+  <button class="btn btn-ghost" id="btn-new" style="display:none" onclick="initGame()">New Word</button>
+</div>
+
+<footer>
+  <p>ARCADIA · <a href="../index.html">Back to Hub</a></p>
+</footer>
+
+<script src="../theme-setup.js"></script>
+<script src="script.js"></script>
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>

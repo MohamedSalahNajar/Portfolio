@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADIA — Slide Puzzle</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="../index.html">ARCADIA</a>
+    <div style="display: flex; align-items: center; gap: 1.8rem;">
+      <ul class="nav-links">
+        <li><a href="../index.html#games">← All Games</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" style="margin: 0; padding: 0;">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag">Game 03</div>
+  <h1>Slide Puzzle</h1>
+  <p>Slide tiles into order using the empty space</p>
+</div>
+
+<div class="scorebar">
+  <div class="scorebar-item">Moves <b id="moves">0</b></div>
+  <div class="scorebar-item">Best <b id="best">—</b></div>
+  <div class="scorebar-item">Time <b id="timer">0:00</b></div>
+</div>
+
+<div class="game-area">
+  <div id="board"></div>
+  <div class="msg-bar" id="message"></div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="newGame()">New Game</button>
+    <button class="btn btn-ghost" onclick="solveHint()">💡 Hint</button>
+  </div>
+
+  <div class="controls-hint">
+    Click a tile next to the empty space · Arrow keys to move empty space
+  </div>
+</div>
+
+<!-- Win modal -->
+<div class="win-modal-backdrop" id="win-modal">
+  <div class="win-modal">
+    <h2>Solved! 🎉</h2>
+    <p>Completed in</p>
+    <div class="stat" id="win-stat"></div>
+    <button class="btn btn-primary" style="margin-top:1rem" onclick="newGame();document.getElementById('win-modal').classList.remove('show')">Play Again</button>
+  </div>
+</div>
+
+<footer>
+  <p>ARCADIA · <a href="../index.html">Back to Hub</a></p>
+</footer>
+
+<script src="../theme-setup.js"></script>
+<script src="script.js"></script>
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>

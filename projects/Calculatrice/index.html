@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculatrice - Mohamed Salah Najar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <a href="../index.html" class="retour-lien">← Retour au portfolio</a>
+
+    <h1 class="titre-page">Calculatrice</h1>
+    <p class="sous-titre">Un projet simple réalisé avec HTML, CSS et JavaScript</p>
+
+    <div class="calculatrice">
+
+      <!-- Écran d'affichage -->
+      <div class="ecran">
+        <div class="expression" id="expression"></div>
+        <div class="resultat" id="resultat">0</div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="grille-boutons">
+
+        <!-- Ligne 1 : C % ⌫ ÷ -->
+        <button class="btn btn-special" onclick="effacerTout()">C</button>
+        <button class="btn btn-special" onclick="ajouterSymbole('%')">%</button>
+        <button class="btn btn-special" onclick="effacerDernier()">⌫</button>
+        <button class="btn btn-operateur" onclick="ajouterSymbole('/')">÷</button>
+
+        <!-- Ligne 2 : 7 8 9 × -->
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('7')">7</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('8')">8</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('9')">9</button>
+        <button class="btn btn-operateur" onclick="ajouterSymbole('*')">×</button>
+
+        <!-- Ligne 3 : 4 5 6 − -->
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('4')">4</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('5')">5</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('6')">6</button>
+        <button class="btn btn-operateur" onclick="ajouterSymbole('-')">−</button>
+
+        <!-- Ligne 4 : 1 2 3 + -->
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('1')">1</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('2')">2</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('3')">3</button>
+        <button class="btn btn-operateur" onclick="ajouterSymbole('+')">+</button>
+
+        <!-- Ligne 5 : +/- 0 , = -->
+        <button class="btn btn-special" onclick="changerSigne()">+/−</button>
+        <button class="btn btn-chiffre" onclick="ajouterSymbole('0')">0</button>
+        <button class="btn btn-chiffre" onclick="ajouterVirgule()">,</button>
+        <button class="btn btn-egal" onclick="calculer()">=</button>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

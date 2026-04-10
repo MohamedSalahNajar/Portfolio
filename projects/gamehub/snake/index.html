@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADIA — Snake</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="../index.html">ARCADIA</a>
+    <div style="display: flex; align-items: center; gap: 1.8rem;">
+      <ul class="nav-links">
+        <li><a href="../index.html#games">← All Games</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" style="margin: 0; padding: 0;">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag">Game 02</div>
+  <h1>Snake</h1>
+  <p>Eat dots, grow longer, don't crash</p>
+</div>
+
+<div class="scorebar">
+  <div class="scorebar-item">Score <b id="score">0</b></div>
+  <div class="scorebar-item">Best <b id="best">0</b></div>
+  <div class="scorebar-item">Level <b id="level">1</b></div>
+</div>
+
+<div class="game-area">
+  <div class="game-overlay-wrap">
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div class="game-overlay show" id="overlay">
+      <h2 id="overlay-title">SNAKE</h2>
+      <p id="overlay-sub">Press SPACE or tap to start</p>
+      <div class="big-score" id="overlay-score" style="display:none"></div>
+    </div>
+  </div>
+
+  <div class="controls-hint">
+    Arrow keys or WASD to move &nbsp;·&nbsp; SPACE to pause / start
+  </div>
+
+  <!-- Mobile d-pad -->
+  <div class="dpad" id="dpad">
+    <button class="dpad-up"    onclick="setDir(0,-1)">▲</button>
+    <button class="dpad-left"  onclick="setDir(-1,0)">◀</button>
+    <button class="dpad-down"  onclick="setDir(0,1)">▼</button>
+    <button class="dpad-right" onclick="setDir(1,0)">▶</button>
+  </div>
+</div>
+
+<footer>
+  <p>ARCADIA · <a href="../index.html">Back to Hub</a></p>
+</footer>
+
+<script src="../theme-setup.js"></script>
+<script src="script.js"></script>
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Générateur de Citations - Mohamed Salah Najar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <a href="../index.html" class="retour-lien">← Retour au portfolio</a>
+
+    <h1 class="titre-page">Générateur de Citations</h1>
+    <p class="sous-titre">Une citation aléatoire pour vous inspirer</p>
+
+    <!-- Carte principale -->
+    <div class="carte-citation" id="carte-citation">
+
+      <!-- Guillemet décoratif -->
+      <div class="guillemet">"</div>
+
+      <!-- Texte de la citation -->
+      <p class="texte-citation" id="texte-citation">
+        Le seul moyen de faire du bon travail est d'aimer ce que l'on fait.
+      </p>
+
+      <!-- Auteur -->
+      <p class="auteur-citation" id="auteur-citation">— Steve Jobs</p>
+
+      <!-- Catégorie -->
+      <span class="badge-categorie" id="badge-categorie">Motivation</span>
+
+    </div>
+
+    <!-- Contrôles -->
+    <div class="controles">
+
+      <!-- Filtre par catégorie -->
+      <div class="groupe-filtre">
+        <label class="label-filtre" for="select-categorie">Catégorie :</label>
+        <select id="select-categorie" class="select-categorie" onchange="filtrerCategorie()">
+          <option value="toutes">Toutes</option>
+          <option value="Motivation">Motivation</option>
+          <option value="Philosophie">Philosophie</option>
+          <option value="Science">Science</option>
+          <option value="Sagesse">Sagesse</option>
+          <option value="Créativité">Créativité</option>
+        </select>
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="groupe-boutons">
+        <button class="btn-secondaire" onclick="copierCitation()" title="Copier la citation">
+          <span id="icone-copie">📋</span> Copier
+        </button>
+        <button class="btn-secondaire" onclick="partagerTwitter()" title="Partager sur X/Twitter">
+          𝕏 Partager
+        </button>
+        <button class="btn-principal" onclick="nouvelleCitation()">
+          Nouvelle citation ↻
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Compteur de citations vues -->
+    <p class="compteur-vues" id="compteur-vues">Citation 1 sur 20</p>
+
+    <!-- Section apprentissage -->
+    <div class="info-section">
+      <h2>Ce que j'ai appris</h2>
+      <ul>
+        <li>Manipulation de tableaux d'objets en JavaScript</li>
+        <li>Animations CSS (fondu, glissement)</li>
+        <li>API Clipboard pour copier du texte</li>
+        <li>Filtrage dynamique d'un tableau de données</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

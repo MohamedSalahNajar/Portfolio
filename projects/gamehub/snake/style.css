@@ -1,0 +1,45 @@
+/* Snake specific styles */
+#canvas {
+  box-shadow:
+    0 0 0 1px rgba(99,102,241,0.15),
+    0 0 40px rgba(99,102,241,0.1),
+    0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Mobile d-pad */
+.dpad {
+  display: none;
+  grid-template-columns: 48px 48px 48px;
+  grid-template-rows: 48px 48px;
+  gap: 5px;
+  margin-top: 0.5rem;
+}
+
+@media (pointer: coarse) {
+  .dpad { display: grid; }
+}
+
+.dpad button {
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 10px;
+  color: var(--light);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dpad button:active {
+  background: rgba(99,102,241,0.3);
+}
+
+.dpad-up    { grid-column: 2; grid-row: 1; }
+.dpad-left  { grid-column: 1; grid-row: 2; }
+.dpad-down  { grid-column: 2; grid-row: 2; }
+.dpad-right { grid-column: 3; grid-row: 2; }
+
+@media (max-width: 440px) {
+  #canvas { width: 320px !important; height: 320px !important; }
+}

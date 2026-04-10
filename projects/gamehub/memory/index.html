@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARCADIA — Memory</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="../index.html">ARCADIA</a>
+    <div style="display: flex; align-items: center; gap: 1.8rem;">
+      <ul class="nav-links">
+        <li><a href="../index.html#games">← All Games</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme" style="margin: 0; padding: 0;">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag">Game 04</div>
+  <h1>Memory</h1>
+  <p>Find all matching pairs with fewest flips</p>
+</div>
+
+<div class="scorebar">
+  <div class="scorebar-item">Flips <b id="flips">0</b></div>
+  <div class="scorebar-item">Pairs <b id="pairs">0</b>/8</div>
+  <div class="scorebar-item">Time <b id="timer">0:00</b></div>
+  <div class="scorebar-item">Best <b id="best">—</b></div>
+</div>
+
+<div class="game-area">
+  <div id="board"></div>
+  <button class="btn btn-primary" onclick="newGame()" style="margin-top:0.5rem">New Game</button>
+</div>
+
+<div class="win-modal-backdrop" id="win-modal">
+  <div class="win-modal">
+    <h2>Cleared! 🃏</h2>
+    <p>Completed in</p>
+    <div class="stat" id="win-stat"></div>
+    <button class="btn btn-primary" style="margin-top:1rem" onclick="newGame();document.getElementById('win-modal').classList.remove('show')">Play Again</button>
+  </div>
+</div>
+
+<footer>
+  <p>ARCADIA · <a href="../index.html">Back to Hub</a></p>
+</footer>
+
+<script src="../theme-setup.js"></script>
+<script src="script.js"></script>
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>
